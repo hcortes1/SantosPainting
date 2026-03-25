@@ -1,0 +1,1 @@
+// Drywall repairs page JavaScript
