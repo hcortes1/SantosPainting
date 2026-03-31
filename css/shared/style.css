@@ -98,7 +98,7 @@ h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
 }
 
 .nav-logo img {
-  height: 42px;
+  height: 72px;
   width: auto;
 }
 
@@ -404,6 +404,13 @@ h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
   }
 
   .dropdown.open .dropdown-menu {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
     display: block;
   }
 }

@@ -96,3 +96,4 @@ All files below exist as empty stubs. Each needs an HTML skeleton (same structur
 - **`js/shared/navbar.js`** — mobile hamburger toggle (`.nav-toggle` / `.nav-links.open`) and Services dropdown toggle on mobile (`.dropdown.open`)
 - **`js/shared/main.js`** — any global page-load logic
 - **`components/footer.html`** — footer markup (currently empty stub)
+
