@@ -1,1 +1,10 @@
 <!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <p>&copy; <span id="footer-year"></span> 2025 Santos Painting. All rights reserved.</p>
+  </div>
+  <script>
+    const el = document.getElementById('footer-year');
+    if (el) el.textContent = new Date().getFullYear();
+  </script>
+</footer>
