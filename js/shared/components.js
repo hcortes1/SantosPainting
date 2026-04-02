@@ -15,5 +15,8 @@ async function loadComponent(id, path) {
 // Resolve paths relative to the site root regardless of page depth
 const root = document.location.pathname.includes('/pages/') ? '../' : './';
 
-loadComponent('navbar-placeholder', root + 'components/navbar.html');
+// Load navbar first, then init toggle logic once it's in the DOM
+loadComponent('navbar-placeholder', root + 'components/navbar.html').then(() => {
+  if (typeof initNavbar === 'function') initNavbar();
+});
 loadComponent('footer-placeholder', root + 'components/footer.html');
