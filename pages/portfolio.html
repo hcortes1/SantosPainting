@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Santos Painting</title>
+    <link rel="stylesheet" href="../css/shared/style.css" />
+    <link rel="stylesheet" href="../css/pages/portfolio.css" />
+    <link rel="stylesheet" href="../css/pages/interior-painting.css" />
+  </head>
+  <body>
+
+      <div id="navbar-placeholder"></div>
+
+      <main>
+          <section class="service-hero">
+              <div class="hero-content">
+                  <h1>Portfolio</h1>
+                  <p class="hero-subtitle">
+                      Previous works by Santos Painting.
+                  </p>
+              </div>
+          </section>
+
+          <div class="filter-buttons">
+              <span>Filter:</span>
+              <button class="filter-btn active" onclick="filterGallery('all', this)">ALL</button>
+              <button class="filter-btn" onclick="filterGallery('painting', this)">
+                  Painting
+              </button>
+              <button class="filter-btn" onclick="filterGallery('powerwash', this)">
+                  Power Washing
+              </button>
+          </div>
+
+          <div class="gallery-grid" id="gallery">
+              <img src="../assets/images/Painting/IMG_0083.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0084.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0086.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0021.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0023.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Powerwash/IMG_0891.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="powerwash" />
+              <img src="../assets/images/Powerwash/IMG_0894.png"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="powerwash" />
+              <img src="../assets/images/Powerwash/1C57DBD3-DFB8-46DC-B5BE-ACB62EC7977D.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="powerwash" />
+              <img src="../assets/images/Powerwash/4DE7BDEA-F0B0-47C4-B4FD-C9A8809E1F3C.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="powerwash" />
+              <img src="../assets/images/Powerwash/10BAC693-B13B-40FE-8436-2AC53F88ADF6.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="powerwash" />
+              <img src="../assets/images/Powerwash/8713B913-7E74-4E04-B386-464DBCDE76A1.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="powerwash" />
+              <img src="../assets/images/Painting/IMG_0101.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0105.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0106.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0107.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0180.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0183.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0184.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0185.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0186.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+              <img src="../assets/images/Painting/IMG_0105.jpg"
+                   onclick="onClick(this)"
+                   style="width:100%"
+                   data-category="painting" />
+          </div>
+      </main>
+
+      <div class="pagination">
+          <button id="prev-btn" class="page-btn" onclick="renderPage(currentPage - 1)">«</button>
+          <span id="page-numbers"></span>
+          <button id="next-btn" class="page-btn" onclick="renderPage(currentPage + 1)">»</button>
+      </div>
+
+
+
+      <script>
+          const imagesPerPage = 9;
+          let currentPage = 1;
+          let currentCategory = 'all';
+
+          function getFilteredImages() {
+              const all = Array.from(document.querySelectorAll('#gallery img'));
+              if (currentCategory === 'all') return all;
+              return all.filter(img => img.dataset.category === currentCategory);
+          }
+
+          function renderPage(page) {
+              currentPage = page;
+              const filtered = getFilteredImages();
+              const total = Math.ceil(filtered.length / imagesPerPage);
+              const start = (page - 1) * imagesPerPage;
+              const end = start + imagesPerPage;
+
+              document.querySelectorAll('#gallery img').forEach(img => {
+                  img.style.display = 'none';
+              });
+
+              filtered.slice(start, end).forEach(img => {
+                  img.style.display = 'block';
+              });
+
+              const pageList = document.getElementById('page-numbers');
+              pageList.innerHTML = '';
+              for (let i = 1; i <= total; i++) {
+                  const btn = document.createElement('button');
+                  btn.textContent = i;
+                  btn.className = 'page-btn' + (i === page ? ' active' : '');
+                  btn.onclick = () => renderPage(i);
+                  pageList.appendChild(btn);
+              }
+
+              document.getElementById('prev-btn').disabled = page === 1;
+              document.getElementById('next-btn').disabled = page === total;
+          }
+
+          function filterGallery(category, clickedBtn) {
+              currentCategory = category;
+              document.querySelectorAll('.filter-btn').forEach(btn => {
+                  btn.classList.remove('active');
+              });
+              clickedBtn.classList.add('active');
+              renderPage(1);
+          }
+
+          function onClick(element) {
+              document.getElementById("img01").src = element.src;
+              document.getElementById("modal01").style.display = "block";
+              document.getElementById("caption").innerHTML = element.alt;
+          }
+          document.addEventListener('DOMContentLoaded', () => renderPage(1));
+      </script>
+
+      <div id="modal01"
+           style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+                background:rgba(0,0,0,0.9); z-index:9999; cursor:pointer;"
+           onclick="this.style.display='none'">
+          <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">
+              <img id="img01" style="max-width:90vw; max-height:90vh; display:block;">
+              <p id="caption" style="color:white; text-align:center; margin-top:0.5rem;"></p>
+          </div>
+      </div>
+
