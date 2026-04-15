@@ -17,21 +17,37 @@ python3 -m http.server 8000
 
 ## Architecture
 
-The site uses a manual component injection pattern: shared `navbar.html` and `footer.html` live in `components/` and are intended to be fetched and injected into each page via `js/shared/components.js`. This script is the glue that makes the shared components reusable across all pages.
+The site uses a manual component injection pattern: shared `navbar.html` and `footer.html` live in `components/` and are fetched and injected into each page via `js/shared/components.js`. `components.js` detects page depth (checks if URL includes `/pages/`) to resolve correct relative paths, then calls `initNavbar()` after navbar injection.
 
 **File organization follows a strict parallel structure:**
-- Each service page in `pages/` has a corresponding CSS file in `css/pages/` and JS file in `js/pages/`
+- Each page in `pages/` has a corresponding CSS file in `css/pages/` and JS file in `js/pages/`
 - Shared/global styles are in `css/shared/`, shared logic in `js/shared/`
 - `css/shared/style.css` — global styles applied everywhere
+- `css/shared/navbar.css` and `css/shared/footer.css` — shared component styles
 - `js/shared/main.js` — main entry point; loads on all pages
-- `js/shared/navbar.js` — navbar interaction logic (mobile menu, etc.)
+- `js/shared/navbar.js` — hamburger toggle (`.nav-toggle` / `.nav-links.open`) and mobile dropdown toggle (`.dropdown.open`); closes menu on any nav link click
+
+**Each page must include these script tags (in this order — `navbar.js` must precede `components.js` since `components.js` calls `initNavbar()` after injecting the navbar):**
+```html
+<script src="../js/shared/navbar.js"></script>
+<script src="../js/shared/components.js"></script>
+<script src="../js/shared/main.js"></script>
+<script src="../js/pages/[page-name].js"></script>
+```
+
+**Service page structure** (use `light-carpentry.html` as the reference implementation):
+- Hero section with title, subtitle, CTA button
+- "What We Do" service description
+- Photo gallery row (currently 3 placeholder divs)
+- "Why Choose Us" features list (5 benefits)
+- CTA section linking to contact
 
 ## Pages & Content
 
-- **Home (`index.html`)** — headline, service icons with "Learn More" links, "What to Expect" section (Clean, Reliable, Professional, Free Estimates, Clear Communication), testimonials, contact section
+- **Home (`index.html`)** — hero, services grid with icons + Learn More links, What to Expect (Clean, Reliable, Professional, Free Estimates, Clear Communication), testimonials, contact form
 - **7 service pages** (all in `pages/`) — Interior Painting, Exterior Painting, Cabinet Painting, Deck & Fence Staining, Drywall Repairs, Light Carpentry, Pressure Washing
-- **About Us** — who we are, mission statement, client testimonials *(page not yet created)*
-- **Photo Gallery / Portfolio** — photos of completed work with short descriptions, styled like CertaPro's website *(page not yet created)*
+- **`pages/about.html`** — who we are, mission statement, testimonials
+- **`pages/portfolio.html`** — gallery with filter buttons (ALL/Painting/Power Washing), pagination, and lightbox modal for full-size images
 
 ## Team Responsibilities
 
@@ -44,7 +60,7 @@ The site uses a manual component injection pattern: shared `navbar.html` and `fo
 
 ## Assets
 
-All images are in `assets/images/` — logo (`Santos-Painting-Logo.png`) and one icon per service. These are complete and ready to use.
+All images are in `assets/images/` — logo (`Santos-Painting-Logo.png`), one icon per service, and 65+ gallery photos in `assets/images/gallery/`.
 
 Note: There is no dedicated Light Carpentry icon — `Wallpaper-Removal-Icon.png` is used as a placeholder.
 
@@ -54,46 +70,59 @@ Note: There is no dedicated Light Carpentry icon — `Wallpaper-Removal-Icon.png
 
 ### ✅ Completed
 
-- **Repo & folder structure** — all `pages/`, `css/pages/`, `js/pages/`, `components/`, `assets/` directories in place
-- **`css/shared/style.css`** — fully implemented with CSS variables, navbar, hero, services grid, what-to-expect, testimonials, contact form, footer, and mobile responsive styles
-- **`index.html`** — fully built: sticky navbar with Services dropdown (all 7 pages), hero, services grid with icons + Learn More links, What to Expect (Clean, Reliable, Professional, Free Estimates, Clear Communication), testimonials, contact form, footer
-- **`components/navbar.html`** — navbar markup populated with root-relative paths, ready for `components.js` injection
-- **`pages/light-carpentry.html`** — full skeleton: hero, What We Do, Why Choose Us (features list), CTA; linked to shared + page CSS and all JS files
-- **`css/pages/light-carpentry.css`** — page-specific styles for all sections
+- **Shared infrastructure** — `components.js`, `navbar.js`, `navbar.html`, `footer.html`, `style.css`, `navbar.css`, `footer.css` all implemented
+- **`index.html`** — fully built with all sections
+- **Service pages with full HTML + CSS:** Interior Painting, Exterior Painting, Deck & Fence Staining, Drywall Repairs, Light Carpentry
+- **`pages/portfolio.html` + `css/pages/portfolio.css`** — complete: gallery grid, filter buttons, pagination, lightbox modal viewer
+- **`pages/about.html`** — hero section present; `css/pages/about.css` created and linked
 
-### 🔲 Not Yet Started — Service Pages (Crisanto & Axel)
+### 🔲 Remaining Work
 
-All files below exist as empty stubs. Each needs an HTML skeleton (same structure as `light-carpentry.html`) and page CSS filled in.
+| Item | Status | Assigned |
+|------|--------|----------|
+| `pages/cabinet-painting.html` | Empty stub (1-line comment) | Hernan |
+| `css/pages/cabinet-painting.css` | Empty | Hernan |
+| `pages/pressure-washing.html` | Empty stub (1-line comment) | Jemal |
+| `css/pages/pressure-washing.css` | Empty | Jemal |
+| `pages/about.html` | Partial — hero only, missing mission/testimonials/team | Hernan |
+| `js/shared/main.js` | Empty (stub comment only) | — |
 
-| Page | HTML | CSS | Assigned |
-|------|------|-----|----------|
-| `pages/interior-painting.html` | stub | stub | Crisanto |
-| `pages/exterior-painting.html` | stub | stub | Crisanto |
-| `pages/cabinet-painting.html` | stub | stub | Hernan |
-| `pages/deck-fence-staining.html` | stub | stub | Axel |
-| `pages/drywall-repairs.html` | stub | stub | Axel |
-| `pages/pressure-washing.html` | stub | stub | Jemal |
+All `js/pages/` files are empty stubs — no page-specific JS is needed yet; they exist for future use.
 
-**Copy descriptions from `features.md` (Obsidian: Projects/In progres/Features.md) when building each page.**
+**Copy service descriptions from `features.md` (Obsidian: Projects/In progress/Features.md) when building each page.**
 
-### 🔲 Not Yet Started — Pages to Create from Scratch
 
-- **`pages/about.html`** (Hernan) — Sections needed:
-  - Who we are
-  - Mission statement
-  - What clients are saying (testimonials)
-  - Needs corresponding `css/pages/about.css` and `js/pages/about.js`
+### Requested Features (not yet implemented)
 
-- **`pages/portfolio.html`** (Jemal) — Sections needed:
-  - Photo gallery of completed work
-  - Short description per photo
-  - Style reference: CertaPro's website layout
-  - Needs corresponding `css/pages/portfolio.css` and `js/pages/portfolio.js`
+- Add photos to each service page (6 per page; select best from gallery)
+- Add all gallery photos to portfolio page
+- Make service tile images on homepage larger
+- Slightly increase global font size
+- Make logo larger
+- ~~Services dropdown: switch from click-to-open to hover-to-open~~ ✅ Fixed
+- Cabinet section
+- Pressure Washing Section 
 
-### 🔲 Not Yet Started — Shared JS
 
-- **`js/shared/components.js`** — fetch and inject `components/navbar.html` and `components/footer.html` into every page
-- **`js/shared/navbar.js`** — mobile hamburger toggle (`.nav-toggle` / `.nav-links.open`) and Services dropdown toggle on mobile (`.dropdown.open`)
-- **`js/shared/main.js`** — any global page-load logic
-- **`components/footer.html`** — footer markup (currently empty stub)
+---
+
+## Known Bugs
+
+### ✅ All Fixed
+
+| # | Bug | Fix |
+|---|-----|-----|
+| 1 | ~~Portfolio gallery images all broken (wrong dir + wrong extension)~~ | Corrected all 21 paths to `../assets/images/gallery/` with correct extensions |
+| 2 | ~~Duplicate gallery image (`IMG_0105` twice) in `pages/portfolio.html`~~ | Replaced second entry with `IMG_0088.jpeg` |
+| 3 | ~~Light Carpentry icon referenced non-existent file~~ | Changed src to `Wallpaper-Removal-Icon.png` |
+| 4 | ~~"Free Estimate" button invisible (CSS specificity — `background: none` override)~~ | Changed `.nav-cta` → `.nav-links a.nav-cta` in `navbar.css` |
+| 5 | ~~Services dropdown closed before reaching menu items (8px hover dead zone)~~ | Changed `top: calc(100% + 8px)` → `top: 100%` in `navbar.css` |
+| 6 | ~~About page linked `interior-painting.css` instead of its own stylesheet~~ | Created `css/pages/about.css` and updated the link |
+| 7 | ~~Portfolio linked stray `interior-painting.css` alongside `portfolio.css`~~ | Removed the extra link from `pages/portfolio.html` |
+| 8 | ~~About page missing `</main>` closing tag~~ | Added `</main>` before footer placeholder |
+| 9 | ~~`footer.css` never linked by any page~~ | Added `footer.css` link after `navbar.css` in all 8 HTML pages |
+| 10 | ~~Navbar contact link had `href =` (space before `=`)~~ | Fixed in `components/navbar.html`; also normalised "Contact us" → "Contact Us" |
+| 11 | ~~Drywall CSS header comment said "exterior painting page CSS"~~ | Corrected to "drywall repairs page CSS" in `drywall-repairs.css` |
+
+
 
