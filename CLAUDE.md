@@ -35,18 +35,18 @@ The site uses a manual component injection pattern: shared `navbar.html` and `fo
 <script src="../js/pages/[page-name].js"></script>
 ```
 
-**Service page structure** (use `light-carpentry.html` as the reference implementation):
-- Hero section with title, subtitle, CTA button
+**Service page structure** (use `interior-painting.html` as the reference implementation):
+- Hero section with service icon, title, subtitle, CTA button
 - "What We Do" service description
-- Photo gallery row (currently 3 placeholder divs)
+- "Our Work" photo gallery — 6 `<img class="gallery-img">` in a 3-col `.gallery-grid`; images sourced from `assets/images/gallery/`
 - "Why Choose Us" features list (5 benefits)
-- CTA section linking to contact
+- CTA section linking to `../index.html#contact`
 
 ## Pages & Content
 
 - **Home (`index.html`)** — hero, services grid with icons + Learn More links, What to Expect (Clean, Reliable, Professional, Free Estimates, Clear Communication), testimonials, contact form
-- **7 service pages** (all in `pages/`) — Interior Painting, Exterior Painting, Cabinet Painting, Deck & Fence Staining, Drywall Repairs, Light Carpentry, Pressure Washing
-- **`pages/about.html`** — who we are, mission statement, testimonials
+- **9 service/info pages** (all in `pages/`) — Interior Painting, Exterior Painting, Cabinet Painting, Deck & Fence Staining, Drywall Repairs, Light Carpentry, Pressure Washing, About, Contact
+- **`pages/about.html`** — hero section present; mission/testimonials/team sections still needed
 - **`pages/portfolio.html`** — gallery with filter buttons (ALL/Painting/Power Washing), pagination, and lightbox modal for full-size images
 
 ## Team Responsibilities
@@ -72,7 +72,7 @@ Note: There is no dedicated Light Carpentry icon — `Wallpaper-Removal-Icon.png
 
 - **Shared infrastructure** — `components.js`, `navbar.js`, `navbar.html`, `footer.html`, `style.css`, `navbar.css`, `footer.css` all implemented
 - **`index.html`** — fully built with all sections
-- **Service pages with full HTML + CSS:** Interior Painting, Exterior Painting, Deck & Fence Staining, Drywall Repairs, Light Carpentry
+- **Service pages with full HTML + CSS:** Interior Painting, Exterior Painting, Cabinet Painting, Deck & Fence Staining, Drywall Repairs, Light Carpentry, Pressure Washing
 - **`pages/portfolio.html` + `css/pages/portfolio.css`** — complete: gallery grid, filter buttons, pagination, lightbox modal viewer
 - **`pages/about.html`** — hero section present; `css/pages/about.css` created and linked
 
@@ -80,29 +80,17 @@ Note: There is no dedicated Light Carpentry icon — `Wallpaper-Removal-Icon.png
 
 | Item | Status | Assigned |
 |------|--------|----------|
-| `pages/cabinet-painting.html` | Empty stub (1-line comment) | Hernan |
-| `css/pages/cabinet-painting.css` | Empty | Hernan |
-| `pages/pressure-washing.html` | Empty stub (1-line comment) | Jemal |
-| `css/pages/pressure-washing.css` | Empty | Jemal |
 | `pages/about.html` | Partial — hero only, missing mission/testimonials/team | Hernan |
 | `js/shared/main.js` | Empty (stub comment only) | — |
 
 All `js/pages/` files are empty stubs — no page-specific JS is needed yet; they exist for future use.
 
-**Copy service descriptions from `features.md` (Obsidian: Projects/In progress/Features.md) when building each page.**
-
-
 ### Requested Features (not yet implemented)
 
-- Add photos to each service page (6 per page; select best from gallery)
-- Add all gallery photos to portfolio page
-- Make service tile images on homepage larger
+- Fix the size and styling of the images in the portfolio page. add a placeholder before and after title for my reference
+- Make service tile images on homepage larger and be evenly distributed
 - Slightly increase global font size
-- Make logo larger
-- ~~Services dropdown: switch from click-to-open to hover-to-open~~ ✅ Fixed
-- Cabinet section
-- Pressure Washing Section 
-
+- Take the logo out of the navbar and put it to the left of the big blue banner under the navbar
 
 ---
 
@@ -123,6 +111,3 @@ All `js/pages/` files are empty stubs — no page-specific JS is needed yet; the
 | 9 | ~~`footer.css` never linked by any page~~ | Added `footer.css` link after `navbar.css` in all 8 HTML pages |
 | 10 | ~~Navbar contact link had `href =` (space before `=`)~~ | Fixed in `components/navbar.html`; also normalised "Contact us" → "Contact Us" |
 | 11 | ~~Drywall CSS header comment said "exterior painting page CSS"~~ | Corrected to "drywall repairs page CSS" in `drywall-repairs.css` |
-
-
-
