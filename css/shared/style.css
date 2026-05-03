@@ -339,6 +339,56 @@ h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
   font-size: 0.9rem;
 }
 
+/* ── Gallery Image Modal ──────────────────────── */
+.gallery-img {
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+
+.gallery-img:hover {
+  opacity: 0.88;
+}
+
+#gallery-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  align-items: center;
+  justify-content: center;
+}
+
+#gallery-modal.open {
+  display: flex;
+}
+
+#gallery-modal img {
+  max-width: 90vw;
+  max-height: 88vh;
+  border-radius: 6px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+  object-fit: contain;
+}
+
+#gallery-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.25rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+#gallery-modal-close:hover {
+  opacity: 1;
+}
+
 /* ── Responsive ───────────────────────────────── */
 @media (max-width: 768px) {
   h1 { font-size: 1.9rem; }
