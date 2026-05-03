@@ -1,7 +1,8 @@
 .service-hero {
-    text-align: center;
     padding: 4rem 1.5rem;
-    background-color: #1a6fc4;
+    background:
+      linear-gradient(to right, rgba(10, 28, 50, 0.88) 30%, rgba(15, 40, 72, 0.72) 100%),
+      url('../../assets/images/gallery/IMG_0160.jpeg') center/cover no-repeat;
     color: #fff;
 }
 
@@ -18,8 +19,8 @@
 
     .service-hero .hero-subtitle {
         font-size: 1.1rem;
-        max-width: 560px;
-        margin: 0 auto 1.5rem;
+        max-width: none;
+        margin: 0 0 1.5rem;
     }
 
 .service-description,

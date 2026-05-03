@@ -36,7 +36,7 @@ The site uses a manual component injection pattern: shared `navbar.html` and `fo
 ```
 
 **Service page structure** (use `interior-painting.html` as the reference implementation):
-- Hero section with service icon, title, subtitle, CTA button
+- Hero section with logo (left, links home) + title, subtitle, CTA button (right) — NO service icon in hero
 - "What We Do" service description
 - "Our Work" photo gallery — 6 `<img class="gallery-img">` in a 3-col `.gallery-grid`; images sourced from `assets/images/gallery/`
 - "Why Choose Us" features list (5 benefits)
@@ -89,11 +89,13 @@ All `js/pages/` files are empty stubs — no page-specific JS is needed yet; the
 
 - Fix the size and styling of the images in the portfolio page. add a placeholder before and after title for my reference
 - Slightly increase global font size
-- Take the logo out of the navbar and put it to the left of the big blue banner under the navbar
 
 ### ✅ Completed Features
 
 - **Homepage service tile images** — icons enlarged from 60px → 90px; grid switched from CSS Grid to Flexbox with `justify-content: center` and fixed `width: 220px` per card, giving a 4-column layout on desktop with the 3-card last row centered
+- **Logo moved from navbar to hero banner** — logo removed from navbar (links centered); logo added to the left (~28%) of every page's hero section via `.hero-inner` flex wrapper; clicking logo navigates home
+- **Hero background image** — all hero sections (`.hero` and `.service-hero`) use `IMG_0160.jpeg` from the gallery with a dark navy gradient overlay (darker on left/logo side, lighter on right/text side) instead of a flat color; logo has a drop-shadow for depth
+- **Service icons removed from hero** — Cabinet Painting, Light Carpentry, and Pressure Washing hero sections no longer show the service icon (icons only remain on the homepage service grid cards)
 
 ---
 
