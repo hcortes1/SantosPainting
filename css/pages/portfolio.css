@@ -37,13 +37,6 @@
     padding: 3rem 1.5rem;
 }
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
 .gallery-placeholder {
     aspect-ratio: 4 / 3;
     background-color: #e0e0e0;
@@ -54,12 +47,6 @@
     justify-content: center;
     color: #888;
     font-size: 0.9rem;
-}
-
-@media (max-width: 640px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 .features-list {
@@ -109,11 +96,11 @@
     transition: all 0.2s ease;
 }
 
-.filter-btn img {
-    width: 28px !important;
-    height: 28px !important;
-    object-fit: contain;
-}
+    .filter-btn img {
+        width: 28px !important;
+        height: 28px !important;
+        object-fit: contain;
+    }
 
     .filter-btn img {
         display: inline !important;
@@ -136,14 +123,23 @@
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 1rem;
     padding: 1.5rem;
+    margin-top: 1.5rem;
 }
+
+    .gallery-grid img {
+        width: 100%;
+        height: auto;
+        display: block;
+        cursor: pointer;
+        border-radius: 4px;
+    }
 
 @media (max-width: 640px) {
     .gallery-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 }
 
@@ -164,20 +160,19 @@
     transition: all 0.2s ease;
 }
 
-.page-btn:hover {
-    background: #1a6fc4;
-    color: white;
-    border-color: #1a6fc4;
-}
-
-.page-btn.active {
-    background: #1a6fc4;
-    color: white;
-    border-color: #1a6fc4;
-}
-
-.page-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
+    .page-btn:hover {
+        background: #1a6fc4;
+        color: white;
+        border-color: #1a6fc4;
     }
 
+    .page-btn.active {
+        background: #1a6fc4;
+        color: white;
+        border-color: #1a6fc4;
+    }
+
+    .page-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
