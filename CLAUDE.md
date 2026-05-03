@@ -88,9 +88,12 @@ All `js/pages/` files are empty stubs — no page-specific JS is needed yet; the
 ### Requested Features (not yet implemented)
 
 - Fix the size and styling of the images in the portfolio page. add a placeholder before and after title for my reference
-- Make service tile images on homepage larger and be evenly distributed
 - Slightly increase global font size
 - Take the logo out of the navbar and put it to the left of the big blue banner under the navbar
+
+### ✅ Completed Features
+
+- **Homepage service tile images** — icons enlarged from 60px → 90px; grid switched from CSS Grid to Flexbox with `justify-content: center` and fixed `width: 220px` per card, giving a 4-column layout on desktop with the 3-card last row centered
 
 ---
 
