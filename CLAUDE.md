@@ -116,3 +116,13 @@ All `js/pages/` files are empty stubs — no page-specific JS is needed yet; the
 | 9 | ~~`footer.css` never linked by any page~~ | Added `footer.css` link after `navbar.css` in all 8 HTML pages |
 | 10 | ~~Navbar contact link had `href =` (space before `=`)~~ | Fixed in `components/navbar.html`; also normalised "Contact us" → "Contact Us" |
 | 11 | ~~Drywall CSS header comment said "exterior painting page CSS"~~ | Corrected to "drywall repairs page CSS" in `drywall-repairs.css` |
+| 12 | ~~Navbar links caused `pages/pages/` double-prefix after code-review agent incorrectly removed leading `/` from hrefs and added broken rewriting logic to `components.js`~~ | Restored root-relative `/` hrefs in `navbar.html`; removed href-rewriting from `components.js` |
+| 13 | ~~`components/footer.html` printed year twice (dynamic span + hardcoded `2025`)~~ | Removed hardcoded `2025` text; year span alone renders the current year |
+| 14 | ~~`pages/contact.html` linked `interior-painting.css` instead of its own stylesheet~~ | Created `css/pages/contact.css` and updated the link |
+| 15 | ~~`pages/contact.html` missing `footer.css` link~~ | Added `footer.css` link after `navbar.css` |
+| 16 | ~~`pages/about.html` CTA button used absolute `/pages/contact.html` href~~ | Changed to relative `href="contact.html"` |
+| 17 | ~~`pages/about.html` missing `js/pages/about.js` stub script tag~~ | Created `js/pages/about.js` stub and added the script tag as the last script in the page |
+| 18 | ~~`pages/portfolio.html` `.pagination` div was outside `<main>`~~ | Moved `.pagination` inside `<main>` before `</main>` |
+| 19 | ~~`pages/portfolio.html` gallery images missing `alt` attributes~~ | Added descriptive `alt` text to all 21 gallery images |
+| 20 | ~~`pages/deck-fence-staining.html` had an HTML comment before `<!DOCTYPE>`, triggering quirks mode~~ | Removed the comment; `<!DOCTYPE html>` is now the first line |
+| 21 | ~~`.service-hero` CSS rule copy-pasted across 9 page stylesheets~~ | Consolidated into `css/shared/style.css` once; removed from all 9 page-specific CSS files |
