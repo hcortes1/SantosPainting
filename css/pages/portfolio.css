@@ -64,6 +64,16 @@
     margin: 0 auto;
 }
 
+/* ── Gallery item entrance animation ─────────── */
+@keyframes galleryFadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.gallery-item.animate {
+    animation: galleryFadeUp 0.45s ease both;
+}
+
 /* ── Gallery cards ────────────────────────────── */
 .gallery-item {
     position: relative;

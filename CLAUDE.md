@@ -8,11 +8,12 @@ Santos Painting is a static multi-page website for a residential and commercial 
 
 ## Running the Site
 
-Open files directly in a browser, or use a local dev server to avoid CORS issues with component injection:
+Run the server from the **parent directory** of the project (one level up from `SantosPainting/`). This is required because `navbar.html` uses `/SantosPainting/` prefixed hrefs for GitHub Pages compatibility — those paths only resolve correctly when served from the parent:
 
 ```bash
-python3 -m http.server 8000
-# Visit http://localhost:8000
+cd ..
+python -m http.server 8080
+# Visit http://localhost:8080/SantosPainting/
 ```
 
 ## Architecture
@@ -23,14 +24,16 @@ The site uses a manual component injection pattern: shared `navbar.html` and `fo
 - Each page in `pages/` has a corresponding CSS file in `css/pages/` and JS file in `js/pages/`
 - Shared/global styles are in `css/shared/`, shared logic in `js/shared/`
 - `css/shared/style.css` — global styles applied everywhere
+- `css/shared/animations.css` — all animation/transition styles (hero entrance, hover effects, scroll animations); loaded on every page after `style.css`
 - `css/shared/navbar.css` and `css/shared/footer.css` — shared component styles
 - `js/shared/main.js` — main entry point; loads on all pages
 - `js/shared/navbar.js` — hamburger toggle (`.nav-toggle` / `.nav-links.open`) and mobile dropdown toggle (`.dropdown.open`); closes menu on any nav link click
 
-**Each page must include these script tags (in this order — `navbar.js` must precede `components.js` since `components.js` calls `initNavbar()` after injecting the navbar):**
+**Each page must include these script tags (in this order — `navbar.js` must precede `components.js` since `components.js` calls `initNavbar()` after injecting the navbar; AOS must precede `main.js` since `main.js` calls `AOS.init()`):**
 ```html
 <script src="../js/shared/navbar.js"></script>
 <script src="../js/shared/components.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script src="../js/shared/main.js"></script>
 <script src="../js/pages/[page-name].js"></script>
 ```
@@ -96,6 +99,7 @@ All `js/pages/` files are empty stubs — no page-specific JS is needed yet; the
 - **Logo moved from navbar to hero banner** — logo removed from navbar (links centered); logo added to the left (~28%) of every page's hero section via `.hero-inner` flex wrapper; clicking logo navigates home
 - **Hero background image** — all hero sections (`.hero` and `.service-hero`) use `IMG_0160.jpeg` from the gallery with a dark navy gradient overlay (darker on left/logo side, lighter on right/text side) instead of a flat color; logo has a drop-shadow for depth
 - **Service icons removed from hero** — Cabinet Painting, Light Carpentry, and Pressure Washing hero sections no longer show the service icon (icons only remain on the homepage service grid cards)
+- **Animations added to all pages** — `css/shared/animations.css` created; AOS (Animate on Scroll) library added via CDN to all 11 pages; scroll-triggered fade-up/fade-right on sections, headings, cards, and feature list items; hero logo/content slide in on page load; hover effects on buttons, service cards, expect items, testimonials, gallery images, and feature list items; portfolio gallery items fade-up with stagger on each page render/filter change
 
 ---
 

@@ -1,5 +1,11 @@
 // main
 
+// AOS initialization
+if (typeof AOS !== 'undefined') {
+  AOS.init({ duration: 650, easing: 'ease-out', once: true, offset: 80 });
+}
+
+
 (function () {
   // Inject modal markup once
   const modal = document.createElement('div');

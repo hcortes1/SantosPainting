@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/shared/footer.css" />
     <!-- Page-specific styles -->
     <link rel="stylesheet" href="../css/pages/light-carpentry.css" />
+    <link rel="stylesheet" href="../css/shared/animations.css" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   </head>
   <body>
 
@@ -39,8 +41,8 @@
       <!-- Service Description -->
       <section class="service-description">
         <div class="container">
-          <h2>What We Do</h2>
-          <p>
+          <h2 data-aos="fade-up">What We Do</h2>
+          <p data-aos="fade-up" data-aos-delay="100">
             From patching trim and fixing baseboards to repairing door frames and
             replacing rotted wood, our team handles the small carpentry work that
             makes a big difference in the finished result.
@@ -51,14 +53,14 @@
       <!-- Work Gallery -->
       <section class="work-gallery">
         <div class="container">
-          <h2>Our Work</h2>
+          <h2 data-aos="fade-up">Our Work</h2>
           <div class="gallery-grid">
-            <img src="../assets/images/gallery/IMG_0273.jpeg" alt="Light carpentry by Santos Painting" class="gallery-img" />
-            <img src="../assets/images/gallery/IMG_0305.jpeg" alt="Light carpentry by Santos Painting" class="gallery-img" />
-            <img src="../assets/images/gallery/IMG_0307.jpeg" alt="Light carpentry by Santos Painting" class="gallery-img" />
-            <img src="../assets/images/gallery/IMG_0308.jpeg" alt="Light carpentry by Santos Painting" class="gallery-img" />
-            <img src="../assets/images/gallery/IMG_0309.jpeg" alt="Light carpentry by Santos Painting" class="gallery-img" />
-            <img src="../assets/images/gallery/IMG_0311.jpeg" alt="Light carpentry by Santos Painting" class="gallery-img" />
+            <img src="../assets/images/gallery/IMG_0273.jpeg" alt="Light carpentry by Santos Painting" class="gallery-img" data-aos="fade-up" data-aos-delay="0" />
+            <img src="../assets/images/gallery/IMG_0305.jpeg" alt="Light carpentry by Santos Painting" class="gallery-img" data-aos="fade-up" data-aos-delay="100" />
+            <img src="../assets/images/gallery/IMG_0307.jpeg" alt="Light carpentry by Santos Painting" class="gallery-img" data-aos="fade-up" data-aos-delay="200" />
+            <img src="../assets/images/gallery/IMG_0308.jpeg" alt="Light carpentry by Santos Painting" class="gallery-img" data-aos="fade-up" data-aos-delay="300" />
+            <img src="../assets/images/gallery/IMG_0309.jpeg" alt="Light carpentry by Santos Painting" class="gallery-img" data-aos="fade-up" data-aos-delay="400" />
+            <img src="../assets/images/gallery/IMG_0311.jpeg" alt="Light carpentry by Santos Painting" class="gallery-img" data-aos="fade-up" data-aos-delay="500" />
           </div>
         </div>
       </section>
@@ -66,21 +68,21 @@
       <!-- Features / Benefits -->
       <section class="service-features">
         <div class="container">
-          <h2>Why Choose Us</h2>
+          <h2 data-aos="fade-up">Why Choose Us</h2>
           <ul class="features-list">
-            <li>
+            <li data-aos="fade-right" data-aos-delay="0">
               <strong>Trim &amp; Baseboard Repair</strong> — We fix gaps, cracks,
               and damaged sections so surfaces are paint-ready.
             </li>
-            <li>
+            <li data-aos="fade-right" data-aos-delay="100">
               <strong>Door &amp; Window Frame Touch-ups</strong> — Restore frames
               to a clean, flush finish before painting.
             </li>
-            <li>
+            <li data-aos="fade-right" data-aos-delay="200">
               <strong>Rotted Wood Replacement</strong> — We identify and swap
               out damaged wood to prevent further deterioration.
             </li>
-            <li>
+            <li data-aos="fade-right" data-aos-delay="300">
               <strong>Seamless Finish</strong> — Repairs are blended and primed
               so paint adheres evenly across the entire surface.
             </li>
@@ -91,9 +93,9 @@
       <!-- Call to Action -->
       <section class="service-cta" id="contact">
         <div class="container">
-          <h2>Ready to get started?</h2>
-          <p>Contact us today for a free, no-obligation estimate.</p>
-          <a href="../index.html#contact" class="btn-primary">Contact Us</a>
+          <h2 data-aos="fade-up">Ready to get started?</h2>
+          <p data-aos="fade-up" data-aos-delay="100">Contact us today for a free, no-obligation estimate.</p>
+          <a href="../index.html#contact" class="btn-primary" data-aos="fade-up" data-aos-delay="200">Contact Us</a>
         </div>
       </section>
 
@@ -105,6 +107,7 @@
     <!-- Shared scripts -->
     <script src="../js/shared/navbar.js"></script>
     <script src="../js/shared/components.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="../js/shared/main.js"></script>
     <!-- Page-specific script -->
     <script src="../js/pages/light-carpentry.js"></script>

@@ -1,0 +1,82 @@
+/* animations — additive only, no layout changes */
+
+/* ── Hero entrance (page load) ──────────────── */
+@keyframes heroFadeLeft {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes heroFadeRight {
+  from { opacity: 0; transform: translateX(24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.hero-logo-link {
+  animation: heroFadeLeft 0.7s ease both;
+}
+
+.hero .hero-content,
+.service-hero .hero-content {
+  animation: heroFadeRight 0.7s 0.2s ease both;
+}
+
+/* ── Button hover ───────────────────────────── */
+.btn-primary {
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Service card hover ─────────────────────── */
+.service-card {
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+}
+
+.service-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 8px 28px rgba(26, 92, 150, 0.14);
+  transform: translateY(-6px);
+}
+
+/* ── Expect item hover ──────────────────────── */
+.expect-item {
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+
+.expect-item:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.09);
+  transform: translateY(-3px);
+}
+
+/* ── Testimonial hover ──────────────────────── */
+.testimonial {
+  transition: background 0.2s, transform 0.2s;
+}
+
+.testimonial:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+}
+
+/* ── Gallery image hover ────────────────────── */
+.gallery-img {
+  transition: transform 0.35s ease, opacity 0.2s;
+}
+
+.gallery-img:hover {
+  transform: scale(1.04);
+  opacity: 1;
+}
+
+/* ── Feature list item hover ────────────────── */
+.features-list li {
+  transition: transform 0.2s, color 0.2s;
+}
+
+.features-list li:hover {
+  transform: translateX(5px);
+  color: var(--color-primary);
+}

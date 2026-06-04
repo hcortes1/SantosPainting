@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/shared/footer.css" />
     <!-- Page-specific styles -->
     <link rel="stylesheet" href="../css/pages/contact.css" />
+    <link rel="stylesheet" href="../css/shared/animations.css" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   </head>
   <body>
 
@@ -21,9 +23,9 @@
       <!-- Contact us page -->
     <section class="contact" id="contact">
         <div class="container">
-          <h2>Get a Free Estimate</h2>
-          <p>Ready to start your project? Reach out and we'll get back to you promptly.</p>
-          <form class="contact-form">
+          <h2 data-aos="fade-up">Get a Free Estimate</h2>
+          <p data-aos="fade-up" data-aos-delay="100">Ready to start your project? Reach out and we'll get back to you promptly.</p>
+          <form class="contact-form" data-aos="fade-up" data-aos-delay="200">
             <input type="text" name="name" placeholder="Your Name" required />
             <input type="email" name="email" placeholder="Email Address" required />
             <input type="tel" name="phone" placeholder="Phone Number" />
@@ -40,6 +42,7 @@
 
     <script src="../js/shared/navbar.js"></script>
     <script src="../js/shared/components.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="../js/shared/main.js"></script>
   </body>
 </html>

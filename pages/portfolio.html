@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/shared/navbar.css" />
     <link rel="stylesheet" href="../css/shared/footer.css" />
     <link rel="stylesheet" href="../css/pages/portfolio.css" />
+    <link rel="stylesheet" href="../css/shared/animations.css" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   </head>
   <body>
 
@@ -28,7 +30,7 @@
               </div>
           </section>
 
-          <div class="filter-buttons">
+          <div class="filter-buttons" data-aos="fade-up">
               <span>Filter:</span>
               <button class="filter-btn active" onclick="filterGallery('all', this)">ALL</button>
               <button class="filter-btn" onclick="filterGallery('painting', this)">
@@ -95,8 +97,13 @@
                   img.closest('.gallery-item').style.display = 'none';
               });
 
-              filtered.slice(start, end).forEach(img => {
-                  img.closest('.gallery-item').style.display = 'block';
+              filtered.slice(start, end).forEach((img, i) => {
+                  const item = img.closest('.gallery-item');
+                  item.style.display = 'block';
+                  item.classList.remove('animate');
+                  void item.offsetWidth;
+                  item.style.animationDelay = (i * 55) + 'ms';
+                  item.classList.add('animate');
               });
 
               const pageList = document.getElementById('page-numbers');
@@ -145,6 +152,7 @@
 
       <script src="../js/shared/navbar.js"></script>
       <script src="../js/shared/components.js"></script>
+      <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
       <script src="../js/shared/main.js"></script>
       <script src="../js/pages/portfolio.js"></script>
   </body>
