@@ -394,4 +394,13 @@ h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
   h1 { font-size: 1.9rem; }
   h2 { font-size: 1.5rem; }
 
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+  }
+
+  .service-card {
+    width: 100%;
+  }
 }

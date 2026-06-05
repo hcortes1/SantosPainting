@@ -1,5 +1,26 @@
 /* animations — additive only, no layout changes */
 
+/* ── Navbar entrance (page load) ────────────── */
+@keyframes navbarSlideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.navbar {
+  animation: navbarSlideDown 0.45s ease both;
+}
+
+.nav-links a,
+.dropdown-toggle {
+  transition: color 0.2s, transform 0.2s;
+}
+
+.nav-links a:hover,
+.dropdown-toggle:hover {
+  transform: translateY(-1px);
+}
+
+
 /* ── Hero entrance (page load) ──────────────── */
 @keyframes heroFadeLeft {
   from { opacity: 0; transform: translateX(-24px); }

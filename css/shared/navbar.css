@@ -116,7 +116,7 @@
   }
 
   .nav-links {
-    display: none;
+    display: flex;
     position: absolute;
     top: 64px;
     left: 0;
@@ -128,10 +128,18 @@
     border-bottom: 1px solid var(--color-border);
     gap: 0.75rem;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-8px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
   }
 
   .nav-links.open {
-    display: flex;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
   }
 
   .dropdown-menu {

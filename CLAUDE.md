@@ -100,6 +100,17 @@ All `js/pages/` files are empty stubs — no page-specific JS is needed yet; the
 - **Hero background image** — all hero sections (`.hero` and `.service-hero`) use `IMG_0160.jpeg` from the gallery with a dark navy gradient overlay (darker on left/logo side, lighter on right/text side) instead of a flat color; logo has a drop-shadow for depth
 - **Service icons removed from hero** — Cabinet Painting, Light Carpentry, and Pressure Washing hero sections no longer show the service icon (icons only remain on the homepage service grid cards)
 - **Animations added to all pages** — `css/shared/animations.css` created; AOS (Animate on Scroll) library added via CDN to all 11 pages; scroll-triggered fade-up/fade-right on sections, headings, cards, and feature list items; hero logo/content slide in on page load; hover effects on buttons, service cards, expect items, testimonials, gallery images, and feature list items; portfolio gallery items fade-up with stagger on each page render/filter change
+- **Navbar page-load animation** — navbar slides down from top on every page load via `navbarSlideDown` keyframe in `animations.css`; nav link hover lifts by 1px
+- **Mobile nav open/close animation** — hamburger menu slides down + fades in using CSS transitions (not a one-shot keyframe animation); implemented via `opacity`/`transform`/`visibility` transition on `.nav-links` in `navbar.css` so the animation re-fires on every open
+- **Homepage mobile 2-per-row grid** — on screens ≤ 768px, `.services-grid` switches to a 2-column CSS grid so service cards display two per row instead of one
+- **Contact page hero** — added matching `service-hero` section with logo, "Contact Us" title, subtitle, and CTA button, consistent with all other service pages
+
+## Workflow (AI Agent Instructions)
+
+- After writing code, deploy the **code-reviewer** subagent to review newly generated code
+- If the code-reviewer finds an error, delegate bug fixing to the **debugger** subagent
+- For frontend design work, deploy the **ui-designer** subagent
+- For testing/debugging, run `python -m http.server 8080` from the parent directory and use the **Playwright** MCP to review changes at `http://localhost:8080/SantosPainting/`
 
 ---
 
